@@ -83,3 +83,42 @@ SELECT nombre, descripción, precio FROM productos ORDER BY nombre;
 SELECT nombre, descripción, precio FROM productos ORDER BY nombre DESC; //lo mismo pero descendente.
 // Otro requerimiento puede ser que se muestre el nombre desc y el precio asc, como actúa? Si tiene dos nombres que inician con la mismo letra, coloca en forma asc el precio, osea va primero el de menor precio.
 
+Operadores lógicos! AND-OR-NOT-xor
+SELECT * FROM productos WHERE (proveedor = ‘HP’) and (precio <= 200);
+A | B | A XOR B
+--------------
+0 | 0 |    0
+0 | 1 |    1
+1 | 0 |    1
+1 | 1 |    0
+El XOR solo va a traer el dato, cuando se cumpla una de las dos condiciones. 
+El AND si cumple las dos condiciones
+El OR si cumple una  o las dos condiciones
+Y el not, sino cumple la condición.
+// Operadores relacionales  BETWEEN-IN  
+SELECT * FROM products WHERE precio between 100 and 160; 
+// muestra la info entre el rango deseado.
+SELECT * FROM productos WHERE proveedor IN (‘HP’ , ‘otro dato’); // el in es como el or
+
+//Patrones de búsqueda LIKE  not LIKE   like ‘%laptop%’  trae todo lo que contenga laptop
+SELECT * FROM productos WHERE descripcion LIKE ‘%laptop%’;
+SELECT * FROM productos WHERE descripcion NOT LIKE ‘%laptop%’; //trae todos, menos los que no tengan laptop
+// y si quisiera traer solo los que inician con “L”  debería poner LIKE ‘L%’; 
+
+//Patron de búsqueda REGEXP  - NOT REGEXP
+//ES igual a LIKE, solo que no lleva los %
+SELECT * FROM productos WHERE proveedor  REGEXP ‘logi’;
+SELECT * FROM productos WHERE proveedor REGEXP ‘[a,e]’;  //trae lo que contengan a o e
+SELECT * FROM productos WHERE proveedor REGEXP ‘[a-d]’; // trae lo que contenga desde la a a la d.
+// función COUNT
+SELECT COUNT(*) FROM productos;  //devuelve la cantidad de productos que tengo
+SELECT COUNT(*) FROM productos WHERE descripcion like ‘%laptop%’;
+
+//Funciones de agrupamiento 
+SELECT SUM(cantidad) FROM productos;  //devuelve la suma de la columna cantidad
+SELECT MAX(precio) FROM productos; // devuelve el precio mayor de todos (lo mismo con min)
+SELECT AVG(precio) FROM productos WHERE nombre LIKE ‘%laptop%’;  //muestra el promedio de los precios que contengan laptop en el nombre.
+// el tipo de dato TINYINT representa un valor pequeño
+//Para valores que solo pueden ser positivos  TINYINT UNSIGNED  se le agrega unsigned.
+
+//Funcion de agrupamiento GROUP BY
