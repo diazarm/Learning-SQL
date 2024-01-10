@@ -23,3 +23,30 @@ VALUES
     ('Cámara DSLR', 'PhotoPro', 'Cámara réflex digital de 24MP', 799.00, 10),
     ('Disco Duro Externo', 'Storage Solutions', 'Disco duro externo de 1TB USB 3.0', 79.99, 30),
     ('Altavoces Bluetooth', 'SoundWave', 'Altavoces portátiles con conectividad Bluetooth', 49.99, 50);
+
+CREATE Table visitantes(
+    nombre VARCHAR(30),
+    edad TINYINT UNSIGNED,
+    sexo CHAR(1),
+    domicilio VARCHAR(30),
+    ciudad VARCHAR(20),
+    telefono VARCHAR(11),
+    montoCompra DECIMAL(6,2) UNSIGNED
+);
+
+INSERT INTO visitantes (nombre, edad, sexo, domicilio, ciudad, telefono, montoCompra) 
+VALUES
+    ('Juan Pérez', 25, 'M', 'Calle Alegre 123', 'Ciudad A', '555-1234', 120.45),
+    ('María Gómez', 30, 'F', 'Avenida Principal 567', 'Ciudad B', '555-5678', 75.80),
+    ('Carlos Rodríguez', 22, 'M', 'Calle Central 789', 'Ciudad C', '555-9876', 200.00),
+    ('Laura Martínez', 28, 'F', 'Boulevard Norte 234', 'Ciudad A', '555-4321', 150.30),
+    ('Alejandro García', 35, 'M', 'Avenida Sur 876', 'Ciudad B', '555-8765', 90.60),
+    ('Sofía López', 26, 'F', 'Calle Este 345', 'Ciudad C', '555-2345', 180.75),
+    ('Pedro Hernández', 29, 'M', 'Avenida Oeste 678', 'Ciudad A', '555-7654', 110.25),
+    ('Ana Ramírez', 32, 'F', 'Calle Tranquila 901', 'Ciudad B', '555-3456', 95.40),
+    ('Gabriel Sánchez', 27, 'M', 'Boulevard Central 123', 'Ciudad C', '555-6789', 160.90),
+    ('Isabel Torres', 31, 'F', 'Calle Movida 456', 'Ciudad A', '555-8765', 130.15);
+
+SELECT COUNT(*) FROM visitantes WHERE ciudad = 'Ciudad A';
+
+-- aparece 4
