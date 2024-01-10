@@ -50,3 +50,16 @@ VALUES
 SELECT COUNT(*) FROM visitantes WHERE ciudad = 'Ciudad A';
 
 -- aparece 4
+
+--La forma correcta es agrupar con group BY
+
+SELECT ciudad, COUNT(*) FROM visitantes GROUP BY ciudad;
+-- aparece la descripcion de la ciudad + la cantidad por cada uno.
+
+SELECT * from visitantes;
+SELECT sexo, SUM(`montoCompra`) FROM visitantes GROUP BY sexo;
+--me da el monto que gasto en total por sexo.ADD
+SELECT sexo, MAX(`montoCompra`), MIN(`montoCompra`) FROM visitantes GROUP BY sexo;
+-- importante que esta dento de bactics montoCompra
+
+SELECT ciudad, sexo, COUNT(*) FROM visitantes GROUP BY ciudad, sexo;
