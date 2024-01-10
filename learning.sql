@@ -49,3 +49,37 @@ TRUNCATE TABLE producto;
 // sino se utiliza :   DELETE FROM producto;
 
 UNSIGNED : es un tipo de dato numérico positivo.
+
+Columnas calculadas:  
+Select nombre, precio, cantidad,  precio * cantidad from productos;
+//Lo que hace es generar una columna con el resultado de la operación math.
+Funciones de cadena (métodos de cadena):
+// para concatenar string donde primero se coloca el separador, ej:
+SELECT concat_ws(‘-’ , ‘Miguel’, ‘Angel’);
+Resultado: Miguel-Angel
+//Puedo usar el length tambien
+SELECT length(‘hola a todos’);  //Brinda el resultado del length
+SELECT left(‘Buenas tardes’, 8; //de izq a derecha imprime 8 caracteres
+SELECT right(‘Buenas tardes’, 8 // de derecha a izq imprime 8 caracteres 
+SELECT ltrim(‘           Algo              ‘); //elimina todos los espacios en blanco del lado izquierdo porque es ltrim y rtrim hace lo mismo pero desde la derecha
+// y trim solo saca los espacios de ambos lados.
+SELECT REPLACE(‘xxx.udemy.com’, ‘x’, ‘w’);  //reemplaza el segundo carácter en toda la línea  con el tercer carácter que se coloque
+SELECT REPEAT (‘SQL’ , 5); // repite 5 veces seguidas SQL
+SELECT REVERSE(‘Hola’); //invierte la palabra Hola  quedando aloH
+SELECT LOWER(‘paSA tODo a minusCula’);
+SELECT UPPER(‘Pasa todo a MAYUSCula);  (mismo caso con UCASE)
+
+
+Funciones matemáticas
+
+SELECT ceiling(precio) FROM productos;  //redondea para arriba los precios.
+SELECT floor(precio) FROM productos; //redondea para abajo.
+SELECT mod(10, 3); // devuelve el resto de la división (en este caso 1) 
+SELECT power(2,3); 8  //eleva al segundo parámetro (2 elevado a la 3)
+SELECT round(20.60); //redondea hacia arriba o abajo depende el valor.
+
+Clausula Order by!  //ordena alfabeticamente por el campo que requiera.
+SELECT nombre, descripción, precio FROM productos ORDER BY nombre;
+SELECT nombre, descripción, precio FROM productos ORDER BY nombre DESC; //lo mismo pero descendente.
+// Otro requerimiento puede ser que se muestre el nombre desc y el precio asc, como actúa? Si tiene dos nombres que inician con la mismo letra, coloca en forma asc el precio, osea va primero el de menor precio.
+
