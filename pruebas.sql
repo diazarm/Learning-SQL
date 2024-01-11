@@ -77,3 +77,36 @@ SELECT * FROM visitantes;
 
 SHOW INDEX FROM productos;
 SHOW INDEX FROM visitantes;
+
+SELECT * FROM productos;
+
+CREATE INDEX i_proveedor ON productos (proveedor);
+-- crea un index que puede ser NO unico, 
+SHOW INDEX from productos;
+
+DESC productos;
+
+ALTER Table productos add stock INT(8);
+-- con ALTER nos permite agregar un nuevo campo en la tabla.
+
+ALTER TABLE productos DROP stock;
+--Para eliminar un campo de la tabla
+
+ALTER Table productos MODIFY stock INT(9) ;
+-- permite modificar un campo de la TABLA
+
+ALTER Table productos CHANGE stock campoLoco int;
+--change sirve para modificar un campo de la TABLESPACE
+
+ALTER TABLE productos DROP id;
+DESC productos;
+
+ALTER Table productos add id INT(4);
+ALTER TABLE productos MODIFY id INT(11);
+
+INSERT INTO productos (nombre, proveedor, descripcion, precio, cantidad, campoLoco) VALUES ('Producto1', 'Proveedor1', 'Descripción1', 10.99, 100, 123);
+
+ALTER TABLE productos MODIFY id int(8) UNIQUE;
+
+ALTER Table productos add PRIMARY KEY(id);
+ALTER Table productos DROP PRIMARY key;
