@@ -63,3 +63,17 @@ SELECT sexo, MAX(`montoCompra`), MIN(`montoCompra`) FROM visitantes GROUP BY sex
 -- importante que esta dento de bactics montoCompra
 
 SELECT ciudad, sexo, COUNT(*) FROM visitantes GROUP BY ciudad, sexo;
+
+SELECT domicilio, COUNT(*) FROM visitantes GROUP BY domicilio ASC;
+SELECT * FROM visitantes;
+
+--Registros duplicados, se pueden obviar con DISTINCT
+
+SELECT DISTINCT proveedor FROM productos;
+SELECT * FROM productos;
+
+SELECT ciudad, COUNT(`ciudad`) from visitantes GROUP BY ciudad ;
+SELECT * FROM visitantes;
+
+SHOW INDEX FROM productos;
+SHOW INDEX FROM visitantes;
