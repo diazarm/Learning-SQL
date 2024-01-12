@@ -110,3 +110,44 @@ ALTER TABLE productos MODIFY id int(8) UNIQUE;
 
 ALTER Table productos add PRIMARY KEY(id);
 ALTER Table productos DROP PRIMARY key;
+
+ALTER TABLE productos RENAME clientes;
+ALTER TABLE clientes TO productos;
+--Son dos formas de cambiar el nombre de las tablas.ADD
+
+select * from productos;
+ALTER TABLE productos
+MODIFY COLUMN id INT(8) AUTO_INCREMENT PRIMARY KEY;
+--MODIFICO el id y lo asigno como PK y autoincremento
+
+SELECT proveedor, COUNT(proveedor) FROM productos GROUP BY proveedor ;
+
+SELECT AVG(precio) FROM productos;
+-- AVG es para sacar el promedio del campo especifico () de la tabla productos.ADDALTER TABLE productos
+ALTER TABLE productos
+CHANGE COLUMN cantidad stock INT(5) UNSIGNED;
+--Cambiamos el nombre de la columna cantidad por stock
+SELECT * FROM productos;
+
+SELECT SUM(stock) FROM productos WHERE nombre = "Laptop";
+
+--INNER JOIN !!  Hay dos formas de hacerlo, una explicita y otra implicita
+SELECT * FROM empleado INNER JOIN departamento ON empleado.id_departamento = departamento.id_departamento;
+--Esta es la forma explicita con el INNER JOIN
+SELECT * FROM empleado, departamento WHERE empleado.id_departamento = departamento.id_departamento;
+--Esta es la forma implicita sin el INNER JOIN
+SHOW DATABASES;
+SELECT * FROM productos;
+SELECT * FROM visitantes;
+CREATE DATABASE francesco;
+SHOW DATABASES;
+use francesco;
+CREATE TABLE persona (
+    id INT(6) AUTO_INCREMENT UNIQUE, 
+    nombre VARCHAR(20),
+    apellido VARCHAR(20),
+    edad INT(3),
+    domicilio VARCHAR(20)
+);
+SELECT * FROM persona;
+INSERT INTO persona 
