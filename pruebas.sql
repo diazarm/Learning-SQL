@@ -150,4 +150,37 @@ CREATE TABLE persona (
     domicilio VARCHAR(20)
 );
 SELECT * FROM persona;
-INSERT INTO persona 
+INSERT INTO persona (nombre, apellido, edad, domicilio) VALUES ('Francesco', 'Diaz Manzur', 4, 'Chile');
+INSERT INTO persona  (nombre, apellido, edad, domicilio) VALUES ('Agostina', 'Manzur', 29, 'Chile'),('Marcelo', 'Diaz', 46, 'Chile');
+ALTER TABLE persona MODIFY COLUMN id INT(6) NOT NULL AUTO_INCREMENT PRIMARY KEY;
+SELECT * FROM alumno;
+SELECT * FROM producto;
+SHOW TABLES FROM alumnos;
+INSERT COLUMN producto_id TO TABLE alumnos;
+ALTER TABLE alumno ADD COLUMN producto_id INT(4) ;
+--agregamos una columna producto_id a alumno
+--hay que hacer lo mismo en productos
+ALTER TABLE producto ADD COLUMN producto_id INT(4) ;
+
+UPDATE alumno SET producto_id = 35 WHERE id = 2;
+--actualizo el valor del product_id para un determinado id de alumno
+UPDATE alumno SET producto_id = 41 WHERE id = 4;
+UPDATE alumno SET edad = 4 WHERE id = 4;
+UPDATE producto SET producto_id = 1 WHERE id = 1;
+UPDATE producto SET producto_id = 41 WHERE id = 40;
+ALTER TABLE alumno ADD CONSTRAINT fk_alumno_producto
+FOREIGN KEY (producto_id) REFERENCES producto(id);
+--Asigno como regla con CONSTRAINT las foreign key 
+
+ALTER TABLE producto ADD CONSTRAINT fk_producto_alumno
+FOREIGN KEY (producto_id) REFERENCES alumno(id);
+
+SELECT DISTINCT producto_id FROM producto WHERE producto_id NOT IN (SELECT id FROM alumno);
+SELECT * FROM producto;
+UPDATE producto SET producto_id = FLOOR(RAND() * 1000) + 1
+WHERE producto_id IS NULL;
+--Aqui le agrega un numero aleatorio, si producto_id es NULL
+
+SELECT * FROM alumno INNER JOIN producto ON alumno.producto_id = producto.producto_id;
+--Muestra una tabla que trae toda la info relacionada con producto_id.
+SELECT * FROM producto;
