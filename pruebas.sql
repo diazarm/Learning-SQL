@@ -184,3 +184,10 @@ WHERE producto_id IS NULL;
 SELECT * FROM alumno INNER JOIN producto ON alumno.producto_id = producto.producto_id;
 --Muestra una tabla que trae toda la info relacionada con producto_id.
 SELECT * FROM producto;
+
+#Inner JOIN  seria por ejemplo, cuando tenemos dos conjuntos e INNER JOIN es lo que tienen en comun los dos conjuntos.
+
+
+
+
+--LEFT JOIN !!
