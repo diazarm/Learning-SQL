@@ -181,13 +181,64 @@ UPDATE producto SET producto_id = FLOOR(RAND() * 1000) + 1
 WHERE producto_id IS NULL;
 --Aqui le agrega un numero aleatorio, si producto_id es NULL
 
-SELECT * FROM alumno INNER JOIN producto ON alumno.producto_id = producto.producto_id;
---Muestra una tabla que trae toda la info relacionada con producto_id.
-SELECT * FROM producto;
 
 #Inner JOIN  seria por ejemplo, cuando tenemos dos conjuntos e INNER JOIN es lo que tienen en comun los dos conjuntos.
-
-
-
-
+SELECT * FROM alumno INNER JOIN producto ON alumno.producto_id = producto.producto_id;
+--Muestra una tabla que trae toda la info relacionada con producto_id. (explicita)
+SELECT * FROM producto;
+SELECT * FROM alumno;
+SELECT * FROM alumno ,producto WHERE alumno.producto_id = producto.producto_id;
+#esta es la forma implicita de hacer un INNER JOIN 
 --LEFT JOIN !!
+# Muestra el conjunto completo de los registros de la tabla A con los registros que conincidan con la tabla B (si es que los hay.)
+
+SELECT * FROM alumno LEFT JOIN producto on alumno.producto_id = producto.producto_id;
+
+--RIGHT JOIN es igual que la anterior pero me muestra lo de la derecha
+
+SELECT * FROM alumno RIGHT JOIN producto on alumno.producto_id = producto.producto_id;
+
+#SUB CONSULTAS  una consulta SQL dentro de una (mamushca)
+SELECT * FROM  empleados WHERE sueldo >= (SELECT AVG (sueldo) FROM empleados)
+-- A modo de ejemplo, se hace una consulta dentro de otra. y esto me permite poder hacer dos consultas al mismo tiempo. 
+
+SHOW DATABASES;
+CREATE DATABASE futbol;
+USE futbol;
+CREATE TABLE hinchas(
+    num_hincha INT(3) AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    apellido VARCHAR(30),
+    equipo_futbol VARCHAR(30)
+);
+
+CREATE TABLE equipos_primera (
+    num_equipo INT(3) AUTO_INCREMENT PRIMARY KEY,
+    nombre_equipo VARCHAR(30),
+    cantidad_socios INT(12),
+    localidad VARCHAR(30),
+    categoria VARCHAR(30)
+)
+
+INSERT INTO hinchas (nombre, apellido, equipo_futbol) VALUES 
+('Marcos','Garcia','River plate'),
+('Esteban','Quito','Boca Juniors'),
+('Lucía','Gómez','Independiente'),
+('Martín','Rodríguez','San Lorenzo'),
+('Valentina','López','Racing Club'),
+('Juan','Fernández','Estudiantes de La Plata'),
+('Carla','Martínez','Newell\'s Old Boys'),
+('Federico','Pérez','Rosario Central'),
+('Ana','Díaz','Vélez Sarsfield'),
+('Pablo','Torres','Huracán'),
+('Agustina','Suárez','Lanús');
+
+INSERT INTO equipos_primera (nombre_equipo, cantidad_socios, localidad, categoria) VALUES
+('River plate', 1500000, 'Buenos Aires', 'Primera A'),
+('Boca Juniors', 1250000, 'Buenos Aires', 'Primera A'),
+('Independiente', 535000, 'Avellaneda', 'Primera A'),
+('Racing', 223000, 'Avellaneda', 'Primera A');
+SELECT * FROM hinchas WHERE equipo_futbol IN (SELECT nombre_equipo FROM equipos_primera);
+
+SELECT equipo_futbol FROM hinchas WHERE num_hincha = 8 AND MODIFY TO 'River Plate'; --Esta mal!
+UPDATE hinchas SET equipo_futbol = 'River Plate' WHERE num_hincha = 8; -- Esta correcto! 
