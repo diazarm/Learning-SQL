@@ -242,3 +242,21 @@ SELECT * FROM hinchas WHERE equipo_futbol IN (SELECT nombre_equipo FROM equipos_
 
 SELECT equipo_futbol FROM hinchas WHERE num_hincha = 8 AND MODIFY TO 'River Plate'; --Esta mal!
 UPDATE hinchas SET equipo_futbol = 'River Plate' WHERE num_hincha = 8; -- Esta correcto! 
+
+#Ejercicio 1 Club de deportes (Creada la db CLUB) obtener: lista completa de todos los socios, de los deportes, lista de los socios que practiquen tenis, y la cantidad de socios que practiquen futbol.ADD
+
+CREATE DATABASE club;
+USE club;
+CREATE TABLE socios (
+    num_socio INT(4) AUTO_INCREMENT PRIMARY KEY,
+    dni INT(10),
+    nombre VARCHAR(30),
+    apellido VARCHAR(30)
+);
+
+CREATE TABLE deportes (
+    codigo INT(4) AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30),
+    es_grupal BOOLEAN
+);
+INSERT INTO socios 
